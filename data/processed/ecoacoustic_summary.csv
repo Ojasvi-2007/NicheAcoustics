@@ -1,0 +1,7 @@
+Site,Session,NDSI,ACI,Entropy (H)
+SiteA,Morning,-0.86,223.2,0.57
+SiteA,Evening,-0.87,227.0,0.53
+SiteB,Morning,+0.51,250.0,0.82
+SiteB,Evening,+0.17,229.7,0.69
+SiteC,Morning,+0.50,239.4,0.78
+SiteC,Evening,-0.56,217.7,0.57

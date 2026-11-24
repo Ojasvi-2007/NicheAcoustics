@@ -1,0 +1,17 @@
+# Virtual Environment
+venv/
+.env
+
+# Python Caches
+__pycache__/
+*.py[cod]
+
+# Audio Files & Raw Data
+data/raw/*.wav
+*.mp3
+*.m4a
+
+# Editor & OS Files
+.DS_Store
+Thumbs.db
+.vscode/
