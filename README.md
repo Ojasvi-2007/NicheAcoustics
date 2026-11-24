@@ -10,7 +10,7 @@
 
 *An end-to-end Digital Signal Processing (DSP) and bioacoustics pipeline measuring how natural soundscapes recover across Chennai's urban-forest transition.*
 
-**Author:** Ojasvi Kumar  |  **Sampling Protocol:** 3 Consecutive Days (`Thu–Sat`)  |  **Windows:** Dawn (`06:00 IST`) & Dusk (`18:00 IST`)
+**Author:** Ojasvi Kumar  |  **Sampling Protocol:** 3 Consecutive Days (`Thu–Sat`)  |  **Windows:** Dawn (`~06:00–06:30 IST`) & Dusk (`~18:00–18:30 IST`)
 
 </div>
 
@@ -121,7 +121,7 @@ As cities expand and vehicular traffic increases, man-made noise encroaches upon
 ## 3. Methodology
 
 ### Field Recording Protocol
-* **Standardized Capture:** Every recording was captured for **60 seconds** in uncompressed **WAV format** (`44.1 kHz`, Mono) at **06:00 IST (Morning)** and **18:00 IST (Evening)** across three consecutive days (`Thursday–Saturday`, totaling **18 recordings**).
+* **Transect Sampling Windows:** Every recording was captured for **60 seconds** in uncompressed **WAV format** (`44.1 kHz`, Mono) within a consistent ~25-minute transect window around dawn (**`~06:00–06:30 IST`**) and dusk (**`~18:00–18:30 IST`**) across three consecutive days (`Thursday–Saturday`, totaling **18 recordings**).
 * **Consistent Orientation:** At each site, the recording device was held horizontally at chest height (`1.3 m`) facing directly into the vegetation and away from road edges to maintain uniform acoustic geometry.
 
 ### Signal Processing & Ecoacoustic Metrics
@@ -148,14 +148,14 @@ Each audio recording is first converted from a time-domain waveform into a **tim
 
 ### 3-Day Diurnal Summary (`Thu–Sat` Averages, $N = 18$)
 
-| Site | Session | Mean NDSI | Mean ACI | Mean Entropy ($H$) | Dominant Acoustic Regime |
+| Site | Session Window | Mean NDSI | Mean ACI | Mean Entropy ($H$) | Dominant Acoustic Regime |
 | :--- | :--- | :---: | :---: | :---: | :--- |
-| **Site A** | Morning (`06:00`) | `-0.86` | `223.2` | `0.57` | Continuous traffic masking (`0.1–1.5 kHz`) |
-| **Site A** | Evening (`18:00`) | `-0.87` | `227.0` | `0.53` | Peak commuter traffic roar (`+2 dB` low-end spike) |
-| **Site B** | Morning (`06:00`) | **`+0.51`** | **`250.0`** | **`0.82`** | Multi-species avian dawn chorus (`2.0–5.0 kHz`) |
-| **Site B** | Evening (`18:00`) | **`+0.17`** | `229.7` | `0.69` | Nocturnal insect/cricket chorus (`6.5–8.5 kHz`) |
-| **Site C** | Morning (`06:00`) | **`+0.50`** | **`239.4`** | **`0.78`** | Dense forest canopy dawn chorus (`2.0–5.5 kHz`) |
-| **Site C** | Evening (`18:00`) | `-0.56` | `217.7` | `0.57` | Post-dusk acoustic stillness (`-56 dB` noise floor) |
+| **Site A** | Morning (`~06:00–06:30`) | `-0.86` | `223.2` | `0.57` | Continuous traffic masking (`0.1–1.5 kHz`) |
+| **Site A** | Evening (`~18:00–18:30`) | `-0.87` | `227.0` | `0.53` | Peak commuter traffic roar (`+2 dB` low-end spike) |
+| **Site B** | Morning (`~06:00–06:30`) | **`+0.51`** | **`250.0`** | **`0.82`** | Multi-species avian dawn chorus (`2.0–5.0 kHz`) |
+| **Site B** | Evening (`~18:00–18:30`) | **`+0.17`** | `229.7` | `0.69` | Nocturnal insect/cricket chorus (`6.5–8.5 kHz`) |
+| **Site C** | Morning (`~06:00–06:30`) | **`+0.50`** | **`239.4`** | **`0.78`** | Dense forest canopy dawn chorus (`2.0–5.5 kHz`) |
+| **Site C** | Evening (`~18:00–18:30`) | `-0.56` | `217.7` | `0.57` | Post-dusk acoustic stillness (`-56 dB` noise floor) |
 
 ### 3-Day Mean Power Spectral Density (`0–10 kHz`, dB Scale)
 
@@ -171,7 +171,7 @@ Plotting Mean Power Spectral Density on a logarithmic decibel ($\text{dB}$) scal
    * **Sites B & C (Blue and Green curves)** drop by **`20–30 dB`** across this entire band (`-20` to `-46 dB`), confirming that dense campus vegetation effectively buffers interior sites from urban road noise.
 
 2. **Morning Bird Chorus (`2.0–5.5 kHz`, Green Shaded Region — Solid Curves):**
-   * At `06:00 IST`, **Site B Morning (solid blue)** and **Site C Morning (solid green)** rise strongly above their low-frequency baselines, forming broad, multi-peaked plateaus between **`-21 dB` and `-33 dB`** across `2.0–5.5 kHz` (with distinct bird call peaks near `2.4 kHz`, `3.7 kHz`, `4.2 kHz`, and `5.1 kHz`).
+   * During the `~06:00–06:30 IST` dawn window, **Site B Morning (solid blue)** and **Site C Morning (solid green)** rise strongly above their low-frequency baselines, forming broad, multi-peaked plateaus between **`-21 dB` and `-33 dB`** across `2.0–5.5 kHz` (with distinct bird call peaks near `2.4 kHz`, `3.7 kHz`, `4.2 kHz`, and `5.1 kHz`).
    * This well-distributed biological activity explains the high **Shannon Entropy (`0.82` and `0.78`)** and **ACI (`250.0` and `239.4`)** recorded at dawn.
 
 3. **Evening Transition: Insect Chorus vs. Forest Stillness (`2.0–8.5 kHz` — Dashed Curves):**
@@ -183,11 +183,11 @@ Plotting Mean Power Spectral Density on a logarithmic decibel ($\text{dB}$) scal
 ## 5. Key Conclusions
 
 1. **Interior Green Spaces Restore Natural Acoustic Niches:**
-   Moving away from the busy campus perimeter (**Site A**: `-0.86` Morning NDSI) into the tree-covered interior (**Sites B & C**) leads to a dramatic recovery in natural soundscapes during the morning (`+0.51` and `+0.50` NDSI). Higher **ACI** (`250.0` and `239.4`) and **Spectral Entropy** (`0.82` and `0.78`) confirm that birds actively share multiple frequency bands between `2.0` and `5.5 kHz` when shielded from traffic noise.
+   Moving away from the busy campus perimeter (**Site A**: `-0.86` Morning NDSI) into the tree-covered interior (**Sites B & C**) leads to a dramatic recovery in natural soundscapes during the dawn window (`+0.51` and `+0.50` NDSI). Higher **ACI** (`250.0` and `239.4`) and **Spectral Entropy** (`0.82` and `0.78`) confirm that birds actively share multiple frequency bands between `2.0` and `5.5 kHz` when shielded from traffic noise.
 
 2. **Different Habitats Support Distinct Day-to-Night Wildlife Patterns:**
-   * **Site B (Buffered Campus Interior)** shows continuous biological activity across both time windows—birds dominate the mid-frequencies (`2.0–5.0 kHz`) in the morning, while insects take over the higher frequencies (`6.5–8.5 kHz`) in the evening.
-   * **Site C (Deep Forest Border)** acts primarily as a **daytime bird sanctuary**—supporting a rich dawn chorus at `06:00 IST`, followed by deep, peaceful forest silence at `18:00 IST` once birds stop singing.
+   * **Site B (Buffered Campus Interior)** shows continuous biological activity across both time windows—birds dominate the mid-frequencies (`2.0–5.0 kHz`) in the morning (`~06:00–06:30 IST`), while insects take over the higher frequencies (`6.5–8.5 kHz`) in the evening (`~18:00–18:30 IST`).
+   * **Site C (Deep Forest Border)** acts primarily as a **daytime bird sanctuary**—supporting a rich dawn chorus during the morning transect, followed by deep, peaceful forest silence in the evening once birds stop singing.
 
 3. **Combining Multiple Metrics Prevents Misleading Interpretations:**
    Although **Site C Evening** has the lowest traffic noise on campus (`-30` to `-46 dB`), its NDSI score is negative (`-0.56`). Because NDSI is a relative ratio comparing biological sound to low-frequency background sound, a very quiet forest at dusk—where birds have stopped singing—can produce a negative NDSI score even in the absence of traffic. Evaluating **NDSI together with decibel power spectra, ACI, and Entropy** provides a much more accurate picture of ecological soundscapes.
