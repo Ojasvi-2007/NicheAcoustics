@@ -3,12 +3,13 @@
 # 🌿 NicheAcoustics
 ### Evaluating the Acoustic Niche Hypothesis Across an Urban-to-Forest Gradient
 
+[![Author](https://img.shields.io/badge/Author-Ojasvi%20Kumar-1A237E?style=for-the-badge)](https://github.com/Ojasvi-2007)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Librosa](https://img.shields.io/badge/DSP-Librosa%20%7C%20NumPy%20%7C%20SciPy-013243?style=for-the-badge)](https://librosa.org/)
-[![Study Area](https://img.shields.io/badge/Location-IIT%20Madras%20%26%20Guindy%20NP-2E7D32?style=for-the-badge)](#2-field-study-sites--habitat-documentation)
+[![Location](https://img.shields.io/badge/Location-IIT%20Madras-2E7D32?style=for-the-badge)](#2-field-study-sites--habitat-documentation)
 [![Dataset](https://img.shields.io/badge/Dataset-18%20WAV%20%7C%2044.1%20kHz%20Mono-6A1B9A?style=for-the-badge)](#4-quantitative-results--spectral-partitioning-analysis)
 
-*An end-to-end Digital Signal Processing (DSP) and bioacoustics pipeline measuring how natural soundscapes recover across Chennai's urban-forest transition.*
+*An end-to-end Digital Signal Processing (DSP) and bioacoustics pipeline measuring how natural soundscapes recover across IIT Madras's urban-forest transition.*
 
 **Author:** Ojasvi Kumar  |  **Sampling Protocol:** 3 Consecutive Days (`Thu–Sat`)  |  **Windows:** Dawn (`~06:00–06:30 IST`) & Dusk (`~18:00–18:30 IST`)
 
@@ -20,7 +21,7 @@
 
 As cities expand and vehicular traffic increases, man-made noise encroaches upon nearby forest ecosystems and reduces the acoustic space available for wildlife communication. According to Bernie Krause's **Acoustic Niche Hypothesis (ANH)**, healthy ecosystems naturally divide the sound spectrum into distinct, non-overlapping frequency bands—allowing birds, insects, and amphibians to communicate simultaneously without interfering with one another. In contrast, urban traffic noise ($0.1\text{--}1.5\text{ kHz}$) masks biological calls ($2.0\text{--}8.0\text{ kHz}$).
 
-**NicheAcoustics** analyzes **18 uncompressed 60-second field recordings** (`44.1 kHz`, 16-bit Mono WAV) collected across a three-site transect spanning the **IIT Madras Campus** and the **Guindy National Park** forest boundary in Chennai, India. Using **Power Spectral Density (PSD)** analysis, the pipeline evaluates three standardized ecoacoustic metrics alongside frequency-power plots to measure how soundscapes change from the busy campus gate to the quiet forest interior.
+**NicheAcoustics** analyzes **18 uncompressed 60-second field recordings** (`44.1 kHz`, 16-bit Mono WAV) collected across a three-site transect within the **Indian Institute of Technology Madras (IIT Madras)** campus in Chennai, India. Using **Power Spectral Density (PSD)** analysis, the pipeline evaluates three standardized ecoacoustic metrics alongside frequency-power plots to measure how soundscapes change from the busy campus gate to the quiet forest interior.
 
 ---
 
@@ -30,7 +31,7 @@ As cities expand and vehicular traffic increases, man-made noise encroaches upon
 | :--- | :--- | :--- | :--- | :--- |
 | **Site A** | **Urban Perimeter Control** | IIT Madras In-Gate Rd / Main Gate Roundabout | `13.005440, 80.241901` | Multi-lane paved entry roundabout adjacent to security gates and Sardar Patel Rd arterial traffic; manicured lawn strips and sparse ornamental trees. |
 | **Site B** | **Buffered Campus Interior** | Ground Road near SAC Rd & Vindhya Mess | `12.990387, 80.235948` | Tree-lined internal campus road (~1.5 km from perimeter highways) flanked by dense shrubs, overhanging canopy, and damp wooded undergrowth. |
-| **Site C** | **Deep Forest Refuge** | Madras Avenue (Guindy National Park Border) | `13.000776, 80.238422` | Closed-canopy tropical dry evergreen forest corridor with mature banyan aerial roots, thick leaf litter, and zero through-traffic. |
+| **Site C** | **Deep Forest Refuge** | Madras Avenue (Northern Forest Pocket, IIT Madras) | `13.000776, 80.238422` | Closed-canopy tropical dry evergreen forest corridor with mature banyan aerial roots, thick leaf litter, and zero through-traffic. |
 
 ---
 
@@ -187,13 +188,13 @@ Plotting Mean Power Spectral Density on a logarithmic decibel ($\text{dB}$) scal
 
 2. **Different Habitats Support Distinct Day-to-Night Wildlife Patterns:**
    * **Site B (Buffered Campus Interior)** shows continuous biological activity across both time windows—birds dominate the mid-frequencies (`2.0–5.0 kHz`) in the morning (`~06:00–06:30 IST`), while insects take over the higher frequencies (`6.5–8.5 kHz`) in the evening (`~18:00–18:30 IST`).
-   * **Site C (Deep Forest Border)** acts primarily as a **daytime bird sanctuary**—supporting a rich dawn chorus during the morning transect, followed by deep, peaceful forest silence in the evening once birds stop singing.
+   * **Site C (Deep Forest Pocket)** acts primarily as a **daytime bird sanctuary**—supporting a rich dawn chorus during the morning transect, followed by deep, peaceful forest silence in the evening once birds stop singing.
 
 3. **Combining Multiple Metrics Prevents Misleading Interpretations:**
    Although **Site C Evening** has the lowest traffic noise on campus (`-30` to `-46 dB`), its NDSI score is negative (`-0.56`). Because NDSI is a relative ratio comparing biological sound to low-frequency background sound, a very quiet forest at dusk—where birds have stopped singing—can produce a negative NDSI score even in the absence of traffic. Evaluating **NDSI together with decibel power spectra, ACI, and Entropy** provides a much more accurate picture of ecological soundscapes.
 
 4. **Value of Urban Forest Corridors:**
-   While the urban boundary (**Site A**) remains acoustically masked throughout the day (`-0.86` to `-0.87` NDSI), preserving contiguous green corridors like **Sites B and C** within the **IIT Madras–Guindy forest matrix** protects essential communication windows for urban wildlife.
+   While the urban boundary (**Site A**) remains acoustically masked throughout the day (`-0.86` to `-0.87` NDSI), preserving contiguous green corridors like **Sites B and C** within **IIT Madras** protects essential communication windows for urban wildlife.
 
 ---
 
