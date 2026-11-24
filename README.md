@@ -8,7 +8,7 @@
 [![Study Area](https://img.shields.io/badge/Location-IIT%20Madras%20%26%20Guindy%20NP-2E7D32?style=for-the-badge)](#2-field-study-sites--habitat-documentation)
 [![Dataset](https://img.shields.io/badge/Dataset-18%20WAV%20%7C%2044.1%20kHz%20Mono-6A1B9A?style=for-the-badge)](#4-quantitative-results--spectral-partitioning-analysis)
 
-*An end-to-end Digital Signal Processing (DSP) and bioacoustics pipeline quantifying spatial and diurnal soundscape recovery across Chennai's urban-forest interface.*
+*An end-to-end Digital Signal Processing (DSP) and bioacoustics pipeline measuring how natural soundscapes recover across Chennai's urban-forest transition.*
 
 **Author:** Ojasvi Kumar  |  **Sampling Protocol:** 3 Consecutive Days (`Thu–Sat`)  |  **Windows:** Dawn (`06:00 IST`) & Dusk (`18:00 IST`)
 
@@ -16,15 +16,11 @@
 
 ---
 
-## 1. Overview & Ecological Motivation
+## 1. Overview & Motivation
 
-Urban expansion and vehicular traffic increasingly encroach upon peri-urban tropical forests, compressing the acoustic bandwidth available for wildlife communication. According to Bernie Krause's **Acoustic Niche Hypothesis (ANH)**, intact ecosystems exhibit **spectral frequency partitioning**—where birds, insects, and amphibians vocalize within distinct, non-overlapping frequency bands—whereas anthropogenic noise ($0.1\text{--}1.5\text{ kHz}$) masks biological signaling ($2.0\text{--}8.0\text{ kHz}$).
+As cities expand and vehicular traffic increases, man-made noise encroaches upon nearby forest ecosystems and reduces the acoustic space available for wildlife communication. According to Bernie Krause's **Acoustic Niche Hypothesis (ANH)**, healthy ecosystems naturally divide the sound spectrum into distinct, non-overlapping frequency bands—allowing birds, insects, and amphibians to communicate simultaneously without interfering with one another. In contrast, urban traffic noise ($0.1\text{--}1.5\text{ kHz}$) masks biological calls ($2.0\text{--}8.0\text{ kHz}$).
 
-**NicheAcoustics** processes **18 uncompressed 60-second field recordings** (`44.1 kHz`, 16-bit Mono WAV) collected synchronously across a three-point transect spanning the **IIT Madras Campus** and the **Guindy National Park** forest boundary in Chennai, India. Using Short-Time Fourier Transform (STFT) **Power Spectral Density (PSD)**, the pipeline computes three ecoacoustic indices alongside dB-scaled spectral profiles:
-
-* **Normalized Difference Soundscape Index (`NDSI`)** — Quantifies the ratio of biophony ($2.0\text{--}8.0\text{ kHz}$) to anthropophony ($0.1\text{--}1.5\text{ kHz}$).
-* **Acoustic Complexity Index (`ACI`)** — Measures rapid temporal intensity modulation characteristic of multi-species bird vocalizations.
-* **Normalized Shannon Spectral Entropy (`H`)** — Evaluates spectral evenness and frequency-niche occupancy across $0.1\text{--}8.0\text{ kHz}$.
+**NicheAcoustics** analyzes **18 uncompressed 60-second field recordings** (`44.1 kHz`, 16-bit Mono WAV) collected across a three-site transect spanning the **IIT Madras Campus** and the **Guindy National Park** forest boundary in Chennai, India. Using **Power Spectral Density (PSD)** analysis, the pipeline evaluates three standardized ecoacoustic metrics alongside frequency-power plots to measure how soundscapes change from the busy campus gate to the quiet forest interior.
 
 ---
 
@@ -39,7 +35,7 @@ Urban expansion and vehicular traffic increasingly encroach upon peri-urban trop
 ---
 
 ### 📍 Site A — Urban Perimeter Control (`13.005440, 80.241901`)
-> **Acoustic Regime:** Chronic low-frequency traffic dominance (`0.1–1.5 kHz`) across both dawn (`-0.86` NDSI) and dusk (`-0.87` NDSI).
+> **Acoustic Regime:** Constant low-frequency traffic dominance (`0.1–1.5 kHz`) during both morning (`-0.86` NDSI) and evening (`-0.87` NDSI).
 
 <table>
   <tr>
@@ -67,7 +63,7 @@ Urban expansion and vehicular traffic increasingly encroach upon peri-urban trop
 ---
 
 ### 📍 Site B — Buffered Campus Interior (`12.990387, 80.235948`)
-> **Acoustic Regime:** Bimodal diurnal niche turnover — avian dawn chorus (`+0.51` NDSI) transitioning into a strong dusk insect/cricket chorus (`+0.17` NDSI).
+> **Acoustic Regime:** Clear day-to-night biological shift — vibrant bird chorus at dawn (`+0.51` NDSI) followed by a loud insect chorus at dusk (`+0.17` NDSI).
 
 <table>
   <tr>
@@ -95,7 +91,7 @@ Urban expansion and vehicular traffic increasingly encroach upon peri-urban trop
 ---
 
 ### 📍 Site C — Deep Forest Refuge (`13.000776, 80.238422`)
-> **Acoustic Regime:** Dense diurnal avian sanctuary at dawn (`+0.50` NDSI, `0.78` Entropy) followed by deep post-dusk acoustic stillness (`-56 dB` noise floor).
+> **Acoustic Regime:** Rich bird activity at dawn (`+0.50` NDSI, `0.78` Entropy) followed by deep, quiet forest stillness at dusk (`-56 dB` noise floor).
 
 <table>
   <tr>
@@ -122,21 +118,29 @@ Urban expansion and vehicular traffic increasingly encroach upon peri-urban trop
 
 ---
 
-## 3. Signal Processing Methodology
+## 3. Methodology
 
-All recordings were captured at `44.1 kHz` (16-bit PCM WAV) held horizontally at chest height (`1.3 m`) facing into the vegetation away from road edges. Each 60-second waveform $x[n]$ is transformed into a time-frequency power spectrogram $S[k, m] = \vert{}X[k, m]\vert{}^2$ (`n_fft = 2048`, `hop_length = 512`) and averaged across time to obtain the 1D **Mean Power Spectral Density** $\bar{P}[k]$.
+### Field Recording Protocol
+* **Standardized Capture:** Every recording was captured for **60 seconds** in uncompressed **WAV format** (`44.1 kHz`, Mono) at **06:00 IST (Morning)** and **18:00 IST (Evening)** across three consecutive days (`Thursday–Saturday`, totaling **18 recordings**).
+* **Consistent Orientation:** At each site, the recording device was held horizontally at chest height (`1.3 m`) facing directly into the vegetation and away from road edges to maintain uniform acoustic geometry.
 
-1. **Normalized Difference Soundscape Index (NDSI):**
+### Signal Processing & Ecoacoustic Metrics
+Each audio recording is first converted from a time-domain waveform into a **time-frequency power spectrogram** ($S[k, m]$) using the Short-Time Fourier Transform (`n_fft = 2048`, `hop_length = 512`), and averaged over time to obtain its **Mean Power Spectral Density** ($\bar{P}[k]$). From this spectral profile, three complementary ecoacoustic metrics are calculated:
+
+1. **Normalized Difference Soundscape Index (`NDSI`) — *Human Noise vs. Wildlife Balance***
    $$\text{NDSI} = \frac{B - A}{B + A} \in [-1, +1]$$
-   where $A = \sum_{k \in [0.1, 1.5\text{ kHz}]} \bar{P}[k]$ (anthropophony) and $B = \sum_{k \in [2.0, 8.0\text{ kHz}]} \bar{P}[k]$ (biophony).
+   * **What it measures:** Compares total sound energy in the **biological band** ($B$: $2.0\text{--}8.0\text{ kHz}$, where birds and insects vocalize) against the **human/traffic band** ($A$: $0.1\text{--}1.5\text{ kHz}$, where vehicle engines and road rumble occur).
+   * **How to read it:** Values near **`+1.0`** indicate pure natural wildlife soundscapes; values near **`-1.0`** indicate heavy traffic dominance.
 
-2. **Acoustic Complexity Index (ACI):**
+2. **Acoustic Complexity Index (`ACI`) — *Vocal Activity & Call Variety***
    $$\text{ACI} = \sum_{k \in B} \frac{\sum_{m=1}^{M-1} \vert{}S[k, m+1] - S[k, m]\vert{}}{\sum_{m=1}^{M} S[k, m]}$$
-   Captures rapid temporal amplitude fluctuations from bird songs while filtering out steady mechanical engine hum.
+   * **What it measures:** Tracks rapid frame-to-frame changes in sound intensity within the biological band ($2.0\text{--}8.0\text{ kHz}$).
+   * **How to read it:** Because bird songs constantly fluctuate in pitch and volume while vehicle engines produce a steady drone, **higher ACI values** indicate richer, more active biological vocalizations.
 
-3. **Normalized Shannon Spectral Entropy ($H$):**
+3. **Normalized Shannon Spectral Entropy (`H`) — *Frequency Band Sharing***
    $$H = -\frac{1}{\log_2(K)} \sum_{k=1}^{K} p_k \log_2(p_k), \quad p_k = \frac{\bar{P}[k]}{\sum_{j=1}^{K} \bar{P}[j]}$$
-   Quantifies spectral evenness across $0.1\text{--}8.0\text{ kHz}$ ($H \to 1$ indicates broad, multi-species frequency niche occupation; $H \to 0$ indicates narrowband dominance).
+   * **What it measures:** Evaluates how evenly sound energy is distributed across all frequencies from $0.1\text{ to }8.0\text{ kHz}$.
+   * **How to read it:** Values closer to **`1.0`** indicate that multiple species are actively sharing different frequency channels (strong niche partitioning), whereas lower values indicate that a single sound source (such as traffic rumble) dominates the spectrum.
 
 ---
 
@@ -160,29 +164,36 @@ All recordings were captured at `44.1 kHz` (16-bit PCM WAV) held horizontally at
 </p>
 
 ### What the Spectral Partitioning Graph Shows
-Plotting Mean Power Spectral Density on a logarithmic decibel ($\text{dB}$) scale reveals distinct frequency-band partitioning across space (**color**) and time of day (**solid vs. dashed lines**):
+Plotting Mean Power Spectral Density on a logarithmic decibel ($\text{dB}$) scale clearly illustrates how different frequencies are occupied across locations (**color**) and times of day (**solid vs. dashed lines**):
 
-1. **Anthropogenic Traffic Band (`0.1–1.5 kHz`, Grey Shaded Region):**
-   * **Site A (Red curves)** dominates the low-frequency band, peaking at **`+2 dB` in the evening** (dashed red) and **`-7 dB` in the morning** (solid red) due to continuous vehicle engines, horns, and tire rumble at the Main Gate roundabout.
-   * **Sites B & C (Blue and Green curves)** drop by **`20–30 dB`** across this band (`-20` to `-46 dB`), demonstrating strong acoustic attenuation of urban traffic inside the vegetated campus interior.
+1. **Traffic Noise Band (`0.1–1.5 kHz`, Grey Shaded Region):**
+   * **Site A (Red curves)** has the highest low-frequency noise, peaking at **`+2 dB` in the evening** (dashed red) and **`-7 dB` in the morning** (solid red) due to continuous vehicle traffic at the Main Gate roundabout.
+   * **Sites B & C (Blue and Green curves)** drop by **`20–30 dB`** across this entire band (`-20` to `-46 dB`), confirming that dense campus vegetation effectively buffers interior sites from urban road noise.
 
-2. **Avian Dawn Chorus Niche (`2.0–5.5 kHz`, Green Shaded Region — Solid Curves):**
-   * At `06:00 IST`, **Site B Morning (solid blue)** and **Site C Morning (solid green)** rise sharply above their traffic baselines, forming broad, multi-peaked plateaus between **`-21 dB` and `-33 dB`** across `2.0–5.5 kHz` (with distinct vocal peaks near `2.4 kHz`, `3.7 kHz`, `4.2 kHz`, and `5.1 kHz`).
-   * This elevated, multi-channel biological energy directly drives the high **Shannon Entropy (`0.82` and `0.78`)** and **ACI (`250.0` and `239.4`)** observed at dawn.
+2. **Morning Bird Chorus (`2.0–5.5 kHz`, Green Shaded Region — Solid Curves):**
+   * At `06:00 IST`, **Site B Morning (solid blue)** and **Site C Morning (solid green)** rise strongly above their low-frequency baselines, forming broad, multi-peaked plateaus between **`-21 dB` and `-33 dB`** across `2.0–5.5 kHz` (with distinct bird call peaks near `2.4 kHz`, `3.7 kHz`, `4.2 kHz`, and `5.1 kHz`).
+   * This well-distributed biological activity explains the high **Shannon Entropy (`0.82` and `0.78`)** and **ACI (`250.0` and `239.4`)** recorded at dawn.
 
-3. **Dusk Turnover: Insect Chorus vs. Forest Stillness (`2.0–8.5 kHz` — Dashed Curves):**
-   * **Site B Evening (dashed blue)** exhibits **temporal & spectral niche turnover**: while mid-frequency bird calls (`2.0–4.5 kHz`) subside to `-44 dB`, a prominent **nocturnal cricket/cicada chorus** emerges between **`6.5–8.5 kHz`**, peaking at **`-23 dB` around `7.7 kHz`** and sustaining positive NDSI (`+0.17`).
-   * **Site C Evening (dashed green)** exhibits **post-dusk ecological stillness**: once diurnal canopy birds roost at sunset, power across `2.0–4.5 kHz` drops to **`-50` to `-56 dB`** (the quietest noise floor on campus) without a loud high-frequency insect swarm—illustrating how a silent forest dusk yields a negative NDSI ratio (`-0.56`) despite having virtually zero traffic noise.
+3. **Evening Transition: Insect Chorus vs. Forest Stillness (`2.0–8.5 kHz` — Dashed Curves):**
+   * **Site B Evening (dashed blue)** shows a clear **day-to-night shift in wildlife vocalizations**: as daytime bird calls (`2.0–4.5 kHz`) quiet down to `-44 dB`, a loud **evening cricket and cicada chorus** appears between **`6.5–8.5 kHz`**, peaking at **`-23 dB` around `7.7 kHz`** and keeping Site B's NDSI positive (`+0.17`).
+   * **Site C Evening (dashed green)** captures **quiet post-dusk forest stillness**: after daytime birds go to roost at sunset, sound energy across `2.0–4.5 kHz` drops to **`-50` to `-56 dB`** (the lowest noise floor on campus) without a loud insect swarm—explaining why its NDSI ratio turns negative (`-0.56`) despite having virtually no traffic noise.
 
 ---
 
 ## 5. Key Conclusions
 
-1. **Acoustic Refuge Recovery Along the Spatial Gradient:** Moving from the urban perimeter (**Site A**: `-0.86` Morning NDSI) into the vegetated campus interior (**Sites B & C**) produces a **`+1.36` surge in Morning NDSI** (`+0.51` and `+0.50`), alongside substantial gains in **ACI** (`223.2` $\to$ `250.0`) and **Spectral Entropy** (`0.57` $\to$ `0.82`), confirming active avian niche partitioning across $2.0\text{--}5.5\text{ kHz}$.
-2. **Diurnal Species-Guild Turnover (Site B vs. Site C):**
-   * **Site B** displays **bimodal diurnal partitioning**: birds dominate the $2.0\text{--}5.0\text{ kHz}$ band at dawn (`+0.51`), while stridulating insects occupy the $6.5\text{--}8.5\text{ kHz}$ band at dusk (`-23 dB` peak), maintaining positive biophonic dominance (`+0.17`) into the evening.
-   * **Site C** operates as a **pure diurnal avian sanctuary**: strong dawn chorus activity (`+0.50`) gives way to deep post-dusk silence at `18:00` (`-56 dB` across $2\text{--}4\text{ kHz}$).
-3. **Methodological Insight for NDSI in Ultra-Quiet Habitats:** Although `Site C Evening` has the lowest traffic power on campus (`-30` to `-46 dB` in $0.1\text{--}1.5\text{ kHz}$), its normalized NDSI evaluates to `-0.56` because diurnal birds have roosted ($B \to 0$) while a faint low-frequency background ambient floor remains. Pairing **NDSI with dB Power Spectral Density, ACI, and Entropy** prevents misclassifying a silent forest dusk as traffic-polluted.
+1. **Interior Green Spaces Restore Natural Acoustic Niches:**
+   Moving away from the busy campus perimeter (**Site A**: `-0.86` Morning NDSI) into the tree-covered interior (**Sites B & C**) leads to a dramatic recovery in natural soundscapes during the morning (`+0.51` and `+0.50` NDSI). Higher **ACI** (`250.0` and `239.4`) and **Spectral Entropy** (`0.82` and `0.78`) confirm that birds actively share multiple frequency bands between `2.0` and `5.5 kHz` when shielded from traffic noise.
+
+2. **Different Habitats Support Distinct Day-to-Night Wildlife Patterns:**
+   * **Site B (Buffered Campus Interior)** shows continuous biological activity across both time windows—birds dominate the mid-frequencies (`2.0–5.0 kHz`) in the morning, while insects take over the higher frequencies (`6.5–8.5 kHz`) in the evening.
+   * **Site C (Deep Forest Border)** acts primarily as a **daytime bird sanctuary**—supporting a rich dawn chorus at `06:00 IST`, followed by deep, peaceful forest silence at `18:00 IST` once birds stop singing.
+
+3. **Combining Multiple Metrics Prevents Misleading Interpretations:**
+   Although **Site C Evening** has the lowest traffic noise on campus (`-30` to `-46 dB`), its NDSI score is negative (`-0.56`). Because NDSI is a relative ratio comparing biological sound to low-frequency background sound, a very quiet forest at dusk—where birds have stopped singing—can produce a negative NDSI score even in the absence of traffic. Evaluating **NDSI together with decibel power spectra, ACI, and Entropy** provides a much more accurate picture of ecological soundscapes.
+
+4. **Value of Urban Forest Corridors:**
+   While the urban boundary (**Site A**) remains acoustically masked throughout the day (`-0.86` to `-0.87` NDSI), preserving contiguous green corridors like **Sites B and C** within the **IIT Madras–Guindy forest matrix** protects essential communication windows for urban wildlife.
 
 ---
 
